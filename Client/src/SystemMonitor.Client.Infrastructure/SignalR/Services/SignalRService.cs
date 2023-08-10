@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.SignalR.Client;
 using SystemMonitor.Client.Infrastructure.SignalR.Services.Interfaces;
+using SystemMonitor.Shared;
 
 internal sealed class SignalRService : ISignalRService
 {
@@ -10,6 +11,7 @@ internal sealed class SignalRService : ISignalRService
     public SignalRService(HubConnection connection)
         => this.connection = connection;
 
-    public async Task SendMessageAsync<T>(string methodName, T message, CancellationToken cancellationToken = default)
-        => await this.connection.InvokeAsync(methodName, message, cancellationToken);
+    public async Task SendMessageAsync<T>(T message, CancellationToken cancellationToken = default)
+        where T : Message
+        => await this.connection.InvokeAsync(message.MethodName, message, cancellationToken);
 }

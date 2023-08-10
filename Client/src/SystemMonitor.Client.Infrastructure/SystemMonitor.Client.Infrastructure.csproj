@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\tests\SystemMonitor.Shared\SystemMonitor.Shared.csproj" />
+        <ProjectReference Include="..\SystemMonitor.Shared\SystemMonitor.Shared.csproj" />
         <ProjectReference Include="..\SystemMonitor.Client.Volumes\SystemMonitor.Client.Volumes.csproj" />
     </ItemGroup>
 

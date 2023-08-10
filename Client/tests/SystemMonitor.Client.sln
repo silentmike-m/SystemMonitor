@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Client.Shared
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Client.Infrastructure.Tests", "SystemMonitor.Client.Infrastructure.Tests\SystemMonitor.Client.Infrastructure.Tests.csproj", "{6763A564-1F76-4E0B-83D9-BAFACA1EEB1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Shared", "SystemMonitor.Shared\SystemMonitor.Shared.csproj", "{478D707C-4BE5-4B22-BA2B-778D0DC258AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Shared", "..\src\SystemMonitor.Shared\SystemMonitor.Shared.csproj", "{AECF9652-78F9-4BF4-8418-C665A86DFFA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,9 +50,9 @@ Global
 		{6763A564-1F76-4E0B-83D9-BAFACA1EEB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6763A564-1F76-4E0B-83D9-BAFACA1EEB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6763A564-1F76-4E0B-83D9-BAFACA1EEB1C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{478D707C-4BE5-4B22-BA2B-778D0DC258AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{478D707C-4BE5-4B22-BA2B-778D0DC258AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{478D707C-4BE5-4B22-BA2B-778D0DC258AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{478D707C-4BE5-4B22-BA2B-778D0DC258AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AECF9652-78F9-4BF4-8418-C665A86DFFA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AECF9652-78F9-4BF4-8418-C665A86DFFA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AECF9652-78F9-4BF4-8418-C665A86DFFA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AECF9652-78F9-4BF4-8418-C665A86DFFA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

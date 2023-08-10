@@ -28,7 +28,7 @@ internal sealed class GotVolumesInformationHandler : INotificationHandler<GotVol
 
         var message = this.MapMessage(notification);
 
-        await this.signalRService.SendMessageAsync(VolumesInformationMessage.METHOD_NAME, message, cancellationToken);
+        await this.signalRService.SendMessageAsync(message, cancellationToken);
     }
 
     private VolumesInformationMessage MapMessage(GotVolumesInformation notification)

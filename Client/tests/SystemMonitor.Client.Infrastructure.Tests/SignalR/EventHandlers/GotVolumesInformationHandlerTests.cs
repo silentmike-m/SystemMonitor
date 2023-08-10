@@ -84,8 +84,8 @@ public sealed class GotVolumesInformationHandlerTests
         VolumesInformationMessage? volumesInformationMessage = null;
 
         this.signalRService
-            .Setup(service => service.SendMessageAsync(VolumesInformationMessage.METHOD_NAME, It.IsAny<VolumesInformationMessage>(), It.IsAny<CancellationToken>()))
-            .Callback<string, VolumesInformationMessage, CancellationToken>((_, message, _) => volumesInformationMessage = message);
+            .Setup(service => service.SendMessageAsync(It.IsAny<VolumesInformationMessage>(), It.IsAny<CancellationToken>()))
+            .Callback<VolumesInformationMessage, CancellationToken>((message, _) => volumesInformationMessage = message);
 
         var notification = new GotVolumesInformation
         {
@@ -101,7 +101,7 @@ public sealed class GotVolumesInformationHandlerTests
         await handler.Handle(notification, CancellationToken.None);
 
         //THEN
-        this.signalRService.Verify(service => service.SendMessageAsync(VolumesInformationMessage.METHOD_NAME, It.IsAny<VolumesInformationMessage>(), It.IsAny<CancellationToken>()), Times.Once);
+        this.signalRService.Verify(service => service.SendMessageAsync(It.IsAny<VolumesInformationMessage>(), It.IsAny<CancellationToken>()), Times.Once);
 
         volumesInformationMessage.Should()
             .NotBeNull()
@@ -117,8 +117,8 @@ public sealed class GotVolumesInformationHandlerTests
         VolumesInformationMessage? volumesInformationMessage = null;
 
         this.signalRService
-            .Setup(service => service.SendMessageAsync(VolumesInformationMessage.METHOD_NAME, It.IsAny<VolumesInformationMessage>(), It.IsAny<CancellationToken>()))
-            .Callback<string, VolumesInformationMessage, CancellationToken>((_, message, _) => volumesInformationMessage = message);
+            .Setup(service => service.SendMessageAsync(It.IsAny<VolumesInformationMessage>(), It.IsAny<CancellationToken>()))
+            .Callback<VolumesInformationMessage, CancellationToken>((message, _) => volumesInformationMessage = message);
 
         var notification = new GotVolumesInformation
         {
@@ -135,7 +135,7 @@ public sealed class GotVolumesInformationHandlerTests
         await handler.Handle(notification, CancellationToken.None);
 
         //THEN
-        this.signalRService.Verify(service => service.SendMessageAsync(VolumesInformationMessage.METHOD_NAME, It.IsAny<VolumesInformationMessage>(), It.IsAny<CancellationToken>()), Times.Once);
+        this.signalRService.Verify(service => service.SendMessageAsync(It.IsAny<VolumesInformationMessage>(), It.IsAny<CancellationToken>()), Times.Once);
 
         var expectedMessage = new VolumesInformationMessage
         {

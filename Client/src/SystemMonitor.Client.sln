@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Client.Volume
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Client.Shared", "SystemMonitor.Client.Shared\SystemMonitor.Client.Shared.csproj", "{08C1EB2B-7DF4-4566-9CE5-B8CA2F4E21EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemMonitor.Shared", "SystemMonitor.Shared\SystemMonitor.Shared.csproj", "{6FB5A426-B56D-4A30-902D-7AE9436B2FE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{08C1EB2B-7DF4-4566-9CE5-B8CA2F4E21EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08C1EB2B-7DF4-4566-9CE5-B8CA2F4E21EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08C1EB2B-7DF4-4566-9CE5-B8CA2F4E21EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB5A426-B56D-4A30-902D-7AE9436B2FE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB5A426-B56D-4A30-902D-7AE9436B2FE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB5A426-B56D-4A30-902D-7AE9436B2FE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB5A426-B56D-4A30-902D-7AE9436B2FE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
