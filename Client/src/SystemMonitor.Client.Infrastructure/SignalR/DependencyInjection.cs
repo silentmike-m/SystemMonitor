@@ -17,10 +17,7 @@ internal static class DependencyInjection
         signalRConfig ??= new SignalROptions();
 
         var connection = new HubConnectionBuilder()
-            .WithUrl(signalRConfig.Url, options =>
-            {
-                options.AccessTokenProvider = () => Task.FromResult(signalRConfig.Password)!;
-            })
+            .WithUrl(signalRConfig.Url)
             .WithAutomaticReconnect()
             .Build();
 

@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SystemMonitor.Client.Infrastructure.AutoMapper;
+using SystemMonitor.Client.Infrastructure.Common.Services;
+using SystemMonitor.Client.Infrastructure.Common.Services.Interfaces;
 using SystemMonitor.Client.Infrastructure.SignalR;
 using SystemMonitor.Client.Infrastructure.Workers;
 using SystemMonitor.Client.Volumes;
@@ -27,6 +29,8 @@ public static class DependencyInjection
         services.AddSignalR(configuration);
 
         services.AddVolumes();
+
+        services.AddSingleton<IClientNameService, ClientNameService>();
 
         return services;
     }

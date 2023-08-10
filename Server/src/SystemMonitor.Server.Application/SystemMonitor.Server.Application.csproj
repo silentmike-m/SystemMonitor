@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>10.0</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Company>Silent Mike</Company>
+        <Product>SystemMonitor-Server</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Using Include="MediatR" />
+        <Using Include="Microsoft.Extensions.Logging" />
+        <Using Include="System.Text.Json.Serialization" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MediatR" Version="12.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+        <InternalsVisibleTo Include="SystemMonitor.Server.Application.Tests" />
+    </ItemGroup>
+
+
+</Project>

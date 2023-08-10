@@ -2,6 +2,7 @@
 
 using global::AutoMapper;
 using SystemMonitor.Client.Infrastructure.AutoMapper.Profiles;
+using SystemMonitor.Client.Infrastructure.Common.Services.Interfaces;
 using SystemMonitor.Client.Infrastructure.SignalR.EventHandlers;
 using SystemMonitor.Client.Infrastructure.SignalR.Services.Interfaces;
 using SystemMonitor.Client.Shared.Events;
@@ -12,6 +13,8 @@ using SourceDisk = SystemMonitor.Client.Shared.Models.VolumeDisk;
 [TestClass]
 public sealed class GotVolumesInformationHandlerTests
 {
+    private const string CLIENT_NAME = "desktop-test";
+
     private static readonly Source SOURCE = new()
     {
         Disks = new List<SourceDisk>
@@ -35,6 +38,7 @@ public sealed class GotVolumesInformationHandlerTests
 
     private static readonly VolumesInformationMessage EXPECTED_MESSAGE = new()
     {
+        ClientName = CLIENT_NAME,
         Error = SOURCE.Error,
         Volumes = new List<Volume>
         {
@@ -61,6 +65,7 @@ public sealed class GotVolumesInformationHandlerTests
         },
     };
 
+    private readonly Mock<IClientNameService> clientNameService = new();
     private readonly NullLogger<GotVolumesInformationHandler> logger = new();
     private readonly IMapper mapper;
 
@@ -68,6 +73,10 @@ public sealed class GotVolumesInformationHandlerTests
 
     public GotVolumesInformationHandlerTests()
     {
+        this.clientNameService
+            .Setup(service => service.GetClientName())
+            .Returns(CLIENT_NAME);
+
         var config = new MapperConfiguration(config =>
         {
             config.AddProfile<VolumeProfile>();
@@ -95,7 +104,7 @@ public sealed class GotVolumesInformationHandlerTests
             },
         };
 
-        var handler = new GotVolumesInformationHandler(this.logger, this.mapper, this.signalRService.Object);
+        var handler = new GotVolumesInformationHandler(this.clientNameService.Object, this.logger, this.mapper, this.signalRService.Object);
 
         //WHEN
         await handler.Handle(notification, CancellationToken.None);
@@ -129,7 +138,7 @@ public sealed class GotVolumesInformationHandlerTests
             Error = "error",
         };
 
-        var handler = new GotVolumesInformationHandler(this.logger, this.mapper, this.signalRService.Object);
+        var handler = new GotVolumesInformationHandler(this.clientNameService.Object, this.logger, this.mapper, this.signalRService.Object);
 
         //WHEN
         await handler.Handle(notification, CancellationToken.None);
@@ -139,6 +148,7 @@ public sealed class GotVolumesInformationHandlerTests
 
         var expectedMessage = new VolumesInformationMessage
         {
+            ClientName = CLIENT_NAME,
             Error = notification.Error,
         };
 

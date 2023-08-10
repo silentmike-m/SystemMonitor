@@ -1,6 +1,7 @@
 ﻿namespace SystemMonitor.Client.Infrastructure.SignalR.EventHandlers;
 
 using global::AutoMapper;
+using SystemMonitor.Client.Infrastructure.Common.Services.Interfaces;
 using SystemMonitor.Client.Infrastructure.SignalR.Services.Interfaces;
 using SystemMonitor.Client.Shared.Events;
 using SystemMonitor.Shared.Volumes;
@@ -11,12 +12,14 @@ using TargetVolumeDisk = SystemMonitor.Shared.Volumes.VolumeDisk;
 
 internal sealed class GotVolumesInformationHandler : INotificationHandler<GotVolumesInformation>
 {
+    private readonly IClientNameService clientNameService;
     private readonly ILogger<GotVolumesInformationHandler> logger;
     private readonly IMapper mapper;
     private readonly ISignalRService signalRService;
 
-    public GotVolumesInformationHandler(ILogger<GotVolumesInformationHandler> logger, IMapper mapper, ISignalRService signalRService)
+    public GotVolumesInformationHandler(IClientNameService clientNameService, ILogger<GotVolumesInformationHandler> logger, IMapper mapper, ISignalRService signalRService)
     {
+        this.clientNameService = clientNameService;
         this.logger = logger;
         this.mapper = mapper;
         this.signalRService = signalRService;
@@ -39,6 +42,7 @@ internal sealed class GotVolumesInformationHandler : INotificationHandler<GotVol
 
         var message = new VolumesInformationMessage
         {
+            ClientName = this.clientNameService.GetClientName(),
             Error = notification.Error,
             Volumes = volumes,
         };
